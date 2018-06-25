@@ -2,8 +2,6 @@ package com.kazma.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sfbest.brokerservice.entity.common.DefaultTypeToken;
-import com.sfbest.brokerservice.web.BooleanAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -67,16 +65,6 @@ public class JsonUtil {
 		return gson.fromJson(json, cls);
 	}
 
-	/**
-	 * json转换成带泛型的java对象
-	 * @param json
-	 * @param typeToken
-	 * @param <T>
-	 * @return
-	 */
-	public static <T> T getFromJson(String json, DefaultTypeToken typeToken) {
-		return gson.fromJson(json, typeToken.getType());
-	}
 
 	public static Gson getGson() {
 		return gson;

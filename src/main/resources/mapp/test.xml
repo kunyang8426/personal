@@ -2,5 +2,23 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kazma.dao">
+<mapper namespace="com.kazma.dao.TestDao">
+    <resultMap id="opterator" type="com.kazma.entity.Operator">
+        <result property="operatorId" javaType="int" column="operator_id"/>
+        <result property="operatorName" javaType="int" column="operator_name"/>
+        <result property="loginName" javaType="string" column="login_name"/>
+        <result property="loginPwd" javaType="string" column="login_pwd"/>
+        <result property="jobNum" javaType="string" column="job_num"/>
+        <result property="telephone" javaType="string" column="telephone"/>
+        <result property="operatorStatus" javaType="int" column="operator_status"/>
+        <result property="email" javaType="string" column="operator_email"/>
+        <result property="operatorType" javaType="int" column="operator_type"/>
+        <result property="operatorDepartment" javaType="int" column="operator_department"/>
+        <result property="role" javaType="string" column="role"/>
+        <result property="permission" javaType="string" column="permission"/>
+    </resultMap>
+
+    <insert id="insertOperator" parameterType="EStudent" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+    </insert>
 </mapper>
