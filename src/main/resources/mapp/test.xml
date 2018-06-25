@@ -18,7 +18,10 @@
         <result property="permission" javaType="string" column="permission"/>
     </resultMap>
 
-    <insert id="insertOperator" parameterType="EStudent" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO
+    <insert id="insertOpt" parameterType="com.kazma.entity.Operator">
+        INSERT INTO gweb_sys_operator(operator_name,login_name,login_pwd,job_num,telephone,operator_status,
+        operator_email,operator_type,operator_department,role)
+        VALUES (#{operatorName},#{loginName},#{loginPwd},#{jobNum},#{telephone},#{operatorStatus},#{email}
+        ,#{operatorType},#{operatorDepartment},#{role})
     </insert>
 </mapper>

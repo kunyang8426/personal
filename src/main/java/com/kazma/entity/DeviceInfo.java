@@ -16,9 +16,6 @@ public class DeviceInfo {
 	protected String source;          //渠道
 	protected String IMEI;            //串号
 
-	public static DeviceInfo convertJsonToThis(String deviceInfoJson){
-	}
-
 
 	public String getToken() {
 		return token;
@@ -80,17 +77,4 @@ public class DeviceInfo {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "DeviceInfo{" +
-				"token='" + token + '\'' +
-				", port=" + port +
-				", clientIP='" + clientIP + '\'' +
-				", deviceType=" + deviceType +
-				", clientVersion='" + clientVersion + '\'' +
-				", source='" + source + '\'' +
-				", IMEI='" + IMEI + '\'' +
-				", address=" + address +
-				'}';
-	}
 }
