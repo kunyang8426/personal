@@ -1,6 +1,7 @@
 package com.kazma.sevice;
 
 import com.kazma.entity.InvokeResult;
+import com.kazma.entity.Material;
 import com.kazma.entity.Operator;
 
 /**
@@ -8,4 +9,8 @@ import com.kazma.entity.Operator;
  */
 public interface MainService {
     public void insertOperator(InvokeResult iv, Operator paramMap);
+
+    void insertMaterial(InvokeResult iv, Material material);
+
+    void getMaterials(InvokeResult iv);
 }
