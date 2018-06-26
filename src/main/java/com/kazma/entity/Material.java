@@ -4,22 +4,22 @@ package com.kazma.entity;
  * Created by 80002526 on 2018/6/26.
  */
 public class Material {
-    private Integer materialId;
-    private String materialName;
-    private String specifications;
-    private Integer buyNum;
-    private Integer totalNum;
-    private String regNo;
-    private String batchNo;
-    private Integer validity;
-    private String supplierName;
-    private Integer buyTime;
-    private String purchaser;
-    private Integer acceptTime;
-    private String acceptor;
-    private String optionMaterialName;
-    private Integer createTime;
-    private Integer operatorId;
+    private Integer materialId;//材料ID
+    private String materialName;//产品名称
+    private String specifications;//规格型号
+    private Integer buyNum;//购进数量
+    private Integer totalNum;//仓库总数量
+    private String regNo;//注册证号
+    private String batchNo;//生产批号
+    private Integer validity;//有效期
+    private String supplierName;//供货商名称
+    private Integer buyTime;//购进日期
+    private String purchaser;//购进人
+    private Integer acceptTime;//验收日期
+    private String acceptor;//验收人
+    private String optionMaterialName;//可以提供该材料的材料商
+    private Integer createTime;//创建时间
+    private Integer operatorId;//操作人id
 
     public Integer getMaterialId() {
         return materialId;
