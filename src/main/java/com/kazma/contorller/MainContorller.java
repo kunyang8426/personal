@@ -6,6 +6,7 @@ import com.kazma.entity.Material;
 import com.kazma.entity.Operator;
 import com.kazma.sevice.MainService;
 import com.kazma.util.JsonUtil;
+import com.kazma.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class MainContorller {
     @Autowired
     @Qualifier("mainService")
     private MainService mainService;
+    @Autowired
+    private RedisUtils redisUtils;
 
     @RequestMapping("/test")
     public @ResponseBody String test(){
@@ -53,6 +56,14 @@ public class MainContorller {
     public @ResponseBody String getMaterials(@RequestParam(value = "paramJson", required = false)  String paramJson){
         InvokeResult iv = new InvokeResult();
         mainService.getMaterials(iv);
+
+        return JsonUtil.toJson(iv);
+    }
+
+    @RequestMapping("/setRedisKey")
+    public @ResponseBody String setRedisKey(String key, String value){
+        InvokeResult iv = new InvokeResult();
+        redisUtils.setString(key, value);
 
         return JsonUtil.toJson(iv);
     }
