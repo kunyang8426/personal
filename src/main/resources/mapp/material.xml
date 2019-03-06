@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kazma.dao.TestDao">
+    <resultMap id="opterator" type="com.kazma.entity.Operator">
+        <result property="operatorId" javaType="int" column="operator_id"/>
+        <result property="operatorName" javaType="int" column="operator_name"/>
+        <result property="loginName" javaType="string" column="login_name"/>
+        <result property="loginPwd" javaType="string" column="login_pwd"/>
+        <result property="jobNum" javaType="string" column="job_num"/>
+        <result property="telephone" javaType="string" column="telephone"/>
+        <result property="operatorStatus" javaType="int" column="operator_status"/>
+        <result property="email" javaType="string" column="operator_email"/>
+        <result property="operatorType" javaType="int" column="operator_type"/>
+        <result property="operatorDepartment" javaType="int" column="operator_department"/>
+        <result property="role" javaType="string" column="role"/>
+        <result property="permission" javaType="string" column="permission"/>
+    </resultMap>
+
+    <resultMap id="material" type="com.kazma.entity.Material">
+        <result property="materialId" javaType="int" column="material_id"/>
+        <result property="materialName" javaType="string" column="material_name"/>
+        <result property="specifications" javaType="string" column="specifications"/>
+        <result property="buyNum" javaType="int" column="buy_num"/>
+        <result property="totalNum" javaType="int" column="total_num"/>
+        <result property="regNo" javaType="string" column="reg_no"/>
+        <result property="batchNo" javaType="string" column="batch_no"/>
+        <result property="validity" javaType="string" column="validity"/>
+        <result property="supplierName" javaType="int" column="supplier_name"/>
+        <result property="buyTime" javaType="int" column="buy_time"/>
+        <result property="purchaser" javaType="string" column="purchaser"/>
+        <result property="acceptTime" javaType="string" column="accept_time"/>
+        <result property="acceptor" javaType="string" column="acceptor"/>
+        <result property="optionMaterialName" javaType="string" column="option_material_name"/>
+        <result property="createTime" javaType="string" column="create_time"/>
+        <result property="operatorId" javaType="string" column="operator_id"/>
+    </resultMap>
+
+    <insert id="insertOpt" parameterType="com.kazma.entity.Operator">
+        INSERT INTO gweb_sys_operator(operator_name,login_name,login_pwd,job_num,telephone,operator_status,
+        operator_email,operator_type,operator_department,role)
+        VALUES (#{operatorName},#{loginName},#{loginPwd},#{jobNum},#{telephone},#{operatorStatus},#{email}
+        ,#{operatorType},#{operatorDepartment},#{role})
+    </insert>
+    <insert id="insertMaterial" parameterType="com.kazma.entity.Material">
+        INSERT INTO material(material_id,material_name,specifications,buy_num,total_num,reg_no,
+        batch_no,validity,supplier_name,buy_time,purchaser,accept_time,acceptor,option_material_name,create_time,operator_id)
+        VALUES (#{materialId},#{materialName},#{specifications},#{buyNum},#{totalNum},#{regNo},#{batchNo}
+        ,#{validity},#{supplierName},#{buyTime},#{purchaser},#{acceptTime},#{acceptor},#{optionMaterialName},#{createTime},#{operatorId})
+    </insert>
+
+    <select id="getMaterials" resultMap="material">
+        SELECT material_id,material_name,specifications,buy_num,total_num,reg_no,
+        batch_no,validity,supplier_name,buy_time,purchaser,accept_time,acceptor,option_material_name,create_time,operator_id
+        FROM material
+        WHERE is_del = 0
+    </select>
+</mapper>
