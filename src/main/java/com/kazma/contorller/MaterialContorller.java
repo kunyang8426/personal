@@ -32,7 +32,6 @@ public class MaterialContorller {
     @RequestMapping("/selectMaterialBase")
     public @ResponseBody
     String selectMaterialBase(@RequestParam(value = "paramJson", required = false)  String paramJson){
-        MaterialBase materialBase = JsonUtil.getFromJson(paramJson, MaterialBase.class);
         InvokeResult iv = new InvokeResult();
         materialService.selectMaterialBase(iv);
 

@@ -10,7 +10,7 @@
         <result property="requirement" javaType="string" column="requirement"/>
         <result property="inspectionRequirement" javaType="string" column="inspection_requirement"/>
         <result property="inspectionRules" javaType="string" column="inspection_rules"/>
-        <result property="remark" javaType="int" column="remark"/>
+        <result property="remark" javaType="string" column="remark"/>
     </resultMap>
 
 

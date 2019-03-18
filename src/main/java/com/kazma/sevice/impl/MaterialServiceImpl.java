@@ -24,5 +24,6 @@ public class MaterialServiceImpl implements MaterialService{
     @Override
     public void selectMaterialBase(InvokeResult iv) {
         List<MaterialBase> materialBases = materialDao.selectMaterialBase();
+        iv.putValueAndReturn("materialBases", materialBases);
     }
 }
