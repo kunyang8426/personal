@@ -1,10 +1,10 @@
-package com.kazma.sevice.impl;
+package com.kazma.service.impl;
 
 import com.kazma.dao.TestDao;
 import com.kazma.entity.InvokeResult;
 import com.kazma.entity.Material;
 import com.kazma.entity.Operator;
-import com.kazma.sevice.MainService;
+import com.kazma.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

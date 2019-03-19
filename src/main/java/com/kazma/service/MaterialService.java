@@ -1,4 +1,4 @@
-package com.kazma.sevice;
+package com.kazma.service;
 
 import com.kazma.entity.InvokeResult;
 import com.kazma.entity.MaterialBase;

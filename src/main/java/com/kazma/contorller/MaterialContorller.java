@@ -1,10 +1,8 @@
 package com.kazma.contorller;
 
 import com.kazma.entity.InvokeResult;
-import com.kazma.entity.Material;
 import com.kazma.entity.MaterialBase;
-import com.kazma.entity.Operator;
-import com.kazma.sevice.MaterialService;
+import com.kazma.service.MaterialService;
 import com.kazma.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
