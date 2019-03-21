@@ -1,6 +1,7 @@
 package com.kazma.service.impl;
 
 import com.kazma.dao.UserDao;
+import com.kazma.entity.Department;
 import com.kazma.entity.InvokeResult;
 import com.kazma.entity.User;
 import com.kazma.entity.UserSession;
@@ -11,6 +12,8 @@ import com.kazma.util.MD5;
 import com.kazma.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -66,5 +69,11 @@ public class UserServiceImpl implements UserService {
 
         User userForRetrun = userDao.getUserById(user.getUserId());
         iv.putValue("user", userForRetrun);
+    }
+
+    @Override
+    public void getDepartments(InvokeResult iv) {
+        List<Department> departmentList = userDao.getDepartments();
+        iv.putValue("departmentList", departmentList);
     }
 }

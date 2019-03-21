@@ -1,7 +1,10 @@
 package com.kazma.dao;
 
+import com.kazma.entity.Department;
 import com.kazma.entity.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface UserDao {
@@ -13,4 +16,6 @@ public interface UserDao {
 
 
     User getUserById(Integer userId);
+
+    List<Department> getDepartments();
 }

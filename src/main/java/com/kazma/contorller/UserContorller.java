@@ -76,4 +76,14 @@ public class UserContorller {
 
         return JsonUtil.toJson(iv);
     }
+
+    @RequestMapping("/getDepartments")
+    public @ResponseBody
+    String getDepartments(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
+        InvokeResult iv = new InvokeResult();
+        userService.getDepartments(iv);
+
+
+        return JsonUtil.toJson(iv);
+    }
 }

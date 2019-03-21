@@ -9,4 +9,6 @@ public interface UserService {
     void login(String pwd, String loginName, InvokeResult iv);
 
     void fillUser(User user, String token, InvokeResult iv);
+
+    void getDepartments(InvokeResult iv);
 }

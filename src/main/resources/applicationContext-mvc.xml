@@ -40,4 +40,8 @@
         <property name="resolveLazily" value="true"/>
     </bean>
 
+    <!-- 启用注解异常解析器 -->
+    <!-- 全局异常处理类为： com.sh.web.mvc.exhandler.WebExceptionHandler -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
+
 </beans>
