@@ -16,6 +16,9 @@ public class RedisUtils {
     @Autowired
     private JedisPool masterjedisPool;
 
+    //user session失效时间
+    public static final int USER_SESSION_EXPIRED_SECONDS = 24 * 3600;
+
     public void setString(String key, String value) {
         Jedis jedis = null;
         try {
@@ -164,6 +167,26 @@ public class RedisUtils {
                 jedis.del(key);
             }
         }catch (Exception ignored){
+        }finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
+
+    public String getUserSession(String token){
+        Jedis jedis = null;
+        try {
+            jedis = masterjedisPool.getResource();
+            String userSession =  jedis.get("TOKEN" + token);
+            if (Check.NULL.NuNStr(userSession)) {
+                return "0";
+            }
+            jedis.expire("TOKEN" + token, USER_SESSION_EXPIRED_SECONDS);
+            return userSession;
+
+        }catch (Exception e){
+            return null;
         }finally {
             if (jedis != null) {
                 jedis.close();

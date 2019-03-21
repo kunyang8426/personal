@@ -18,9 +18,42 @@
     </resultMap>
 
 
-    <insert id="regUser" parameterType="user" useGeneratedKeys="true" keyProperty="userId">
-        INSERT INTO user_base(login_name,pwd)
+    <insert id="regUser" parameterType="com.kazma.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user_base(login_name,password)
         VALUES (#{loginName},#{password})
     </insert>
+
+    <select id="login" resultMap="user" parameterType="com.kazma.entity.User">
+        SELECT user_id,user_name,job_num,mobile,department_id,department_name
+        FROM user_base
+        WHERE login_name = #{loginName} AND password = #{password}
+    </select>
+
+    <update id="fillUser" parameterType="com.kazma.entity.User">
+        UPDATE user_base
+        SET
+        <if test="jobNum != null">
+            job_num = #{jobNum},
+        </if>
+        <if test="mobile != null">
+            mobile = #{mobile},
+        </if>
+        <if test="departmentId != null">
+            department_id = #{departmentId},
+        </if>
+        <if test="departmentName != null">
+            department_name = #{departmentName},
+        </if>
+        <if test="departmentName != null">
+            user_name = #{userName}
+        </if>
+        WHERE user_id = #{userId}
+    </update>
+
+    <select id="getUserById" resultMap="user" parameterType="com.kazma.entity.User">
+        SELECT user_id,user_name,job_num,mobile,department_id,department_name
+        FROM user_base
+        WHERE user_id = #{userId}
+    </select>
 
 </mapper>

@@ -4,13 +4,13 @@ public class User {
     private Integer userId;
     private String userName;
     private String jobNum;
-    private Integer mobile;
+    private String mobile;
     private Integer departmentId;
     private String departmentName;
-    private String loginName;
-    private String password;
-    private String resPermission;
-    private String menuPermission;
+    private transient String loginName;
+    private transient String password;
+    private transient String resPermission;
+    private transient String menuPermission;
 
 
     public Integer getUserId() {
@@ -37,11 +37,11 @@ public class User {
         this.jobNum = jobNum;
     }
 
-    public Integer getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(Integer mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
