@@ -1,10 +1,7 @@
 package com.kazma.service.impl;
 
 import com.kazma.dao.UserDao;
-import com.kazma.entity.Department;
-import com.kazma.entity.InvokeResult;
-import com.kazma.entity.User;
-import com.kazma.entity.UserSession;
+import com.kazma.entity.*;
 import com.kazma.service.UserService;
 import com.kazma.util.Check;
 import com.kazma.util.JsonUtil;
@@ -75,5 +72,16 @@ public class UserServiceImpl implements UserService {
     public void getDepartments(InvokeResult iv) {
         List<Department> departmentList = userDao.getDepartments();
         iv.putValue("departmentList", departmentList);
+    }
+
+    @Override
+    public void addMenu(Menu menu, InvokeResult iv) {
+        userDao.addMenu(menu);
+    }
+
+    @Override
+    public void getTopMenus(InvokeResult iv) {
+        List<Menu> menuList = userDao.getTopMenus();
+        iv.putValue("menuList", menuList);
     }
 }

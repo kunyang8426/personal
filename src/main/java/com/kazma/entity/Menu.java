@@ -1,12 +1,16 @@
 package com.kazma.entity;
 
+import java.util.List;
+
 public class Menu {
     private Integer menuId;
     private String menuName;
     private String url;
+    private String param;
     private Integer parentId;
     private transient Integer disOrder;
     private transient Integer isAdmin;
+    private List<Menu> childMenus;
 
     public Integer getMenuId() {
         return menuId;
@@ -54,5 +58,21 @@ public class Menu {
 
     public void setIsAdmin(Integer isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
+
+    public List<Menu> getChildMenus() {
+        return childMenus;
+    }
+
+    public void setChildMenus(List<Menu> childMenus) {
+        this.childMenus = childMenus;
     }
 }

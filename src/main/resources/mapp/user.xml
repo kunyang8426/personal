@@ -23,6 +23,16 @@
         <result property="responsibility" javaType="string" column="responsibility"/>
     </resultMap>
 
+    <resultMap id="menu" type="com.kazma.entity.Menu">
+        <result property="menuId" javaType="int" column="menu_id"/>
+        <result property="menuName" javaType="string" column="menu_name"/>
+        <result property="url" javaType="string" column="url"/>
+        <result property="param" javaType="string" column="param"/>
+        <result property="parentId" javaType="int" column="parent_id"/>
+        <result property="disOrder" javaType="int" column="dis_order"/>
+        <result property="isAdmin" javaType="int" column="is_admin"/>
+    </resultMap>
+
 
     <insert id="regUser" parameterType="com.kazma.entity.User" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO user_base(login_name,password)
@@ -67,4 +77,48 @@
         FROM department
     </select>
 
+    <insert id="addMenu" parameterType="com.kazma.entity.Menu" >
+        INSERT INTO menu(
+        <if test="menuName != null">
+            menu_name
+        </if>
+        <if test="url != null">
+            ,url
+        </if>
+        <if test="param != null">
+            ,param
+        </if>
+        <if test="parentId != null">
+            ,parent_id
+        </if>
+        <if test="isAdmin != null">
+            ,is_admin
+        </if>
+        )
+        VALUE
+        (
+        <if test="menuName != null">
+            #{menuName}
+        </if>
+        <if test="url != null">
+            ,#{url}
+        </if>
+        <if test="param != null">
+            ,#{param}
+        </if>
+        <if test="parentId != null">
+            ,#{parentId}
+        </if>
+        <if test="isAdmin != null">
+            ,#{isAdmin}
+        </if>
+        )
+    </insert>
+
+    <select id="getTopMenus" resultMap="menu">
+        SELECT menu_id,menu_name,url,param,parent_id,dis_order,is_admin
+        FROM menu
+        WHERE parent_id = 0
+        AND enable = 1
+    </select>
 </mapper>

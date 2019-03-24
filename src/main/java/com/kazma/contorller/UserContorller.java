@@ -1,9 +1,6 @@
 package com.kazma.contorller;
 
-import com.kazma.entity.DeviceInfo;
-import com.kazma.entity.InvokeResult;
-import com.kazma.entity.MaterialBase;
-import com.kazma.entity.User;
+import com.kazma.entity.*;
 import com.kazma.service.UserService;
 import com.kazma.util.Check;
 import com.kazma.util.JsonUtil;
@@ -82,6 +79,30 @@ public class UserContorller {
     String getDepartments(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
         InvokeResult iv = new InvokeResult();
         userService.getDepartments(iv);
+
+
+        return JsonUtil.toJson(iv);
+    }
+
+    @RequestMapping("/addMenu")
+    public @ResponseBody
+    String addMenu(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
+        InvokeResult iv = new InvokeResult();
+        Menu menu = JsonUtil.getFromJson(paramJson, Menu.class);
+
+        userService.addMenu(menu, iv);
+
+
+        return JsonUtil.toJson(iv);
+    }
+
+    @RequestMapping("/getTopMenus")
+    public @ResponseBody
+    String showTopMenu(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
+        InvokeResult iv = new InvokeResult();
+        Menu menu = JsonUtil.getFromJson(paramJson, Menu.class);
+
+        userService.getTopMenus(iv);
 
 
         return JsonUtil.toJson(iv);

@@ -1,6 +1,7 @@
 package com.kazma.dao;
 
 import com.kazma.entity.Department;
+import com.kazma.entity.Menu;
 import com.kazma.entity.User;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,8 @@ public interface UserDao {
     User getUserById(Integer userId);
 
     List<Department> getDepartments();
+
+    void addMenu(Menu menu);
+
+    List<Menu> getTopMenus();
 }
