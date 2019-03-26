@@ -11,6 +11,8 @@ public class Menu {
     private transient Integer disOrder;
     private transient Integer isAdmin;
     private List<Menu> childMenus;
+    private List<Resource> resources;
+    private int selected;//是否被选中
 
     public Integer getMenuId() {
         return menuId;
@@ -74,5 +76,21 @@ public class Menu {
 
     public void setChildMenus(List<Menu> childMenus) {
         this.childMenus = childMenus;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
+    }
+
+    public int getSelected() {
+        return selected;
+    }
+
+    public void setSelected(int selected) {
+        this.selected = selected;
     }
 }

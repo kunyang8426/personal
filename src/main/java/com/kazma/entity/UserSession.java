@@ -4,6 +4,7 @@ public class UserSession {
     private Integer userId;
     private String resPermission;
     private String menuPermission;
+    private Integer isAdmin;
 
     public Integer getUserId() {
         return userId;
@@ -27,5 +28,13 @@ public class UserSession {
 
     public void setMenuPermission(String menuPermission) {
         this.menuPermission = menuPermission;
+    }
+
+    public Integer getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Integer isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

@@ -6,6 +6,7 @@ public class Resource {
     private Integer menuId;
     private String resName;
     private String resDesc;
+    private Integer isAdmin;
 
     public Integer getResourceId() {
         return resourceId;
@@ -37,5 +38,13 @@ public class Resource {
 
     public void setResDesc(String resDesc) {
         this.resDesc = resDesc;
+    }
+
+    public Integer getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Integer isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

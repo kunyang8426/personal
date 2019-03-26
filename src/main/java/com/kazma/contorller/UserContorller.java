@@ -3,6 +3,7 @@ package com.kazma.contorller;
 import com.kazma.entity.*;
 import com.kazma.service.UserService;
 import com.kazma.util.Check;
+import com.kazma.util.GsonHashMap;
 import com.kazma.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,15 +97,44 @@ public class UserContorller {
         return JsonUtil.toJson(iv);
     }
 
-    @RequestMapping("/getTopMenus")
+    @RequestMapping("/getMenus")
     public @ResponseBody
     String showTopMenu(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
         InvokeResult iv = new InvokeResult();
-        Menu menu = JsonUtil.getFromJson(paramJson, Menu.class);
+        GsonHashMap paramMap = JsonUtil.getFromJson(paramJson, GsonHashMap.class);
+        //type 0:全部或者不传 1:父 2:子
+        Integer type = paramMap.optInt("type");
 
-        userService.getTopMenus(iv);
+        userService.getMenus(type, iv);
 
 
         return JsonUtil.toJson(iv);
     }
+
+    @RequestMapping("/addResource")
+    public @ResponseBody
+    String addResource(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
+        InvokeResult iv = new InvokeResult();
+        Resource resource = JsonUtil.getFromJson(paramJson, Resource.class);
+
+        userService.addResource(resource, iv);
+
+
+        return JsonUtil.toJson(iv);
+    }
+
+    @RequestMapping("/getPermissionTree")
+    public @ResponseBody
+    String getPermissionTree(@RequestParam(value = "paramJson", required = false) String paramJson, @RequestParam(value = "deviceJson", required = false)  String deviceJson){
+        InvokeResult iv = new InvokeResult();
+        DeviceInfo deviceInfo = JsonUtil.getFromJson(deviceJson, DeviceInfo.class);
+        String token = deviceInfo.getToken();
+
+
+        userService.getPermissionTree(token, iv);
+
+        return JsonUtil.toJson(iv);
+    }
+
+
 }

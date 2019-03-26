@@ -11,6 +11,7 @@ public class User {
     private transient String password;
     private transient String resPermission;
     private transient String menuPermission;
+    private transient Integer isAdmin;
 
 
     public Integer getUserId() {
@@ -91,5 +92,13 @@ public class User {
 
     public void setMenuPermission(String menuPermission) {
         this.menuPermission = menuPermission;
+    }
+
+    public Integer getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Integer isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

@@ -1,5 +1,7 @@
 package com.kazma.util;
 
+import com.kazma.entity.User;
+import com.kazma.entity.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
@@ -174,7 +176,7 @@ public class RedisUtils {
         }
     }
 
-    public String getUserSession(String token){
+    public String getUserSessionStr(String token){
         Jedis jedis = null;
         try {
             jedis = masterjedisPool.getResource();
@@ -192,5 +194,39 @@ public class RedisUtils {
                 jedis.close();
             }
         }
+    }
+
+    public UserSession getUserSession(String token){
+        Jedis jedis = null;
+        try {
+            jedis = masterjedisPool.getResource();
+            String userSession =  jedis.get("TOKEN" + token);
+            if (Check.NULL.NuNStr(userSession)) {
+                return null;
+            }
+            jedis.expire("TOKEN" + token, USER_SESSION_EXPIRED_SECONDS);
+
+            return JsonUtil.getFromJson(userSession, UserSession.class);
+
+        }catch (Exception e){
+            return null;
+        }finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
+
+    public String setUserSession(User user){
+        UserSession userSession = new UserSession();
+        userSession.setMenuPermission(user.getMenuPermission());
+        userSession.setResPermission(user.getResPermission());
+        userSession.setUserId(user.getUserId());
+        userSession.setIsAdmin(user.getIsAdmin());
+        String token = MD5.createToken(userSession.getUserId()+"");
+
+        setStringWithExpired("TOKEN" + token, JsonUtil.toJson(userSession), 12 * 3600);
+
+        return token;
     }
 }
